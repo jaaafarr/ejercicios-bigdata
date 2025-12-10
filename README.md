@@ -98,41 +98,35 @@ Si buscas soluciones para tu empresa:
 
 ### Roadmap de Aprendizaje
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    TU VIAJE EN BIG DATA                     │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  NIVEL 1: Fundamentos                                       │
-│  ├─ SQLite: Bases de datos relacionales                    │
-│  ├─ Pandas: Análisis de datos en memoria                   │
-│  └─ Git/GitHub: Control de versiones                       │
-│                                                              │
-│           ↓ Aprenderás en 2-3 semanas                      │
-│                                                              │
-│  NIVEL 2: Escalando                                         │
-│  ├─ Dask: Procesamiento paralelo (datos > RAM)            │
-│  ├─ Parquet: Almacenamiento columnar eficiente            │
-│  └─ Optimización: Técnicas de performance                  │
-│                                                              │
-│           ↓ Aprenderás en 3-4 semanas                      │
-│                                                              │
-│  NIVEL 3: Big Data Real                                     │
-│  ├─ PySpark: Procesamiento distribuido                     │
-│  ├─ SQL avanzado: Queries complejas                        │
-│  └─ Pipelines: ETL/ELT en producción                       │
-│                                                              │
-│           ↓ Aprenderás en 4-5 semanas                      │
-│                                                              │
-│  NIVEL 4: Visualización y Deploy                            │
-│  ├─ Dashboards: Flask + Chart.js                           │
-│  ├─ APIs: Servir datos procesados                          │
-│  └─ Deploy: Poner en producción                            │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+**📍 NIVEL 1: Fundamentos** (2-3 semanas)
+- SQLite: Bases de datos relacionales
+- Pandas: Análisis de datos en memoria
+- Git/GitHub: Control de versiones
 
-⏱️ Tiempo total estimado: 10-12 semanas (a tu ritmo)
-```
+⬇️
+
+**📍 NIVEL 2: Escalando** (3-4 semanas)
+- Dask: Procesamiento paralelo (datos > RAM)
+- Parquet: Almacenamiento columnar eficiente
+- Optimización: Técnicas de performance
+
+⬇️
+
+**📍 NIVEL 3: Big Data Real** (4-5 semanas)
+- PySpark: Procesamiento distribuido
+- SQL avanzado: Queries complejas
+- Pipelines: ETL/ELT en producción
+
+⬇️
+
+**📍 NIVEL 4: Visualización y Deploy** (3-4 semanas)
+- Dashboards: Flask + Chart.js
+- APIs: Servir datos procesados
+- Deploy: Poner en producción
+
+---
+
+⏱️ **Tiempo total estimado: 10-12 semanas (a tu ritmo)**
 
 ### Tecnologías que Dominarás
 
