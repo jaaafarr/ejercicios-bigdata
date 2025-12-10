@@ -252,434 +252,674 @@ git config --global user.email "tu@email.com"
 <details>
 <summary><b>Click aquí para el flujo completo</b></summary>
 
-## 📋 FLUJO COMPLETO DE TRABAJO
+## 📋 ENTENDIENDO GIT Y GITHUB (Para Principiantes)
 
-### Visión General del Flujo
+### ¿Qué es Git? ¿Qué es GitHub?
+
+**Git** = Sistema de control de versiones (como "guardar versiones" de tu código)
+**GitHub** = Nube donde guardas tu código (como Dropbox, pero para código)
 
 ```
-┌──────────────────────────────────────────────────────────────┐
-│              FLUJO DE TRABAJO COMPLETO                       │
-├──────────────────────────────────────────────────────────────┤
-│                                                               │
-│  1. FORK                                                      │
-│     ┌────────────────────────────────────┐                  │
-│     │  Repositorio del Profesor (Origen)  │                  │
-│     │  TodoEconometria/ejercicios-bigdata │                  │
-│     └────────────────────────────────────┘                  │
-│                    │                                          │
-│                    │ Hacer Fork                               │
-│                    ↓                                          │
-│     ┌────────────────────────────────────┐                  │
-│     │   TU Repositorio (Fork Público)     │                  │
-│     │   TU_USUARIO/ejercicios-bigdata     │                  │
-│     └────────────────────────────────────┘                  │
-│                                                               │
-│  2. CLONE                                                     │
-│     git clone https://github.com/TU_USUARIO/...             │
-│                    │                                          │
-│                    ↓                                          │
-│     ┌────────────────────────────────────┐                  │
-│     │    Repositorio Local (Tu PC)        │                  │
-│     │    ejercicios-bigdata/              │                  │
-│     └────────────────────────────────────┘                  │
-│                                                               │
-│  3. CREAR REPO PRIVADO DE PRUEBAS (Opcional pero recomendado)│
-│     ┌────────────────────────────────────┐                  │
-│     │   TU Repo Privado (Experimentos)    │                  │
-│     │   TU_USUARIO/bigdata-practica       │                  │
-│     └────────────────────────────────────┘                  │
-│                                                               │
-│  4. TRABAJAR EN EJERCICIOS                                   │
-│     - Editar código localmente                               │
-│     - Hacer commits frecuentes                               │
-│     - Probar en tu repo privado primero                      │
-│                                                               │
-│  5. PULL REQUEST (Entregar)                                  │
-│     TU Fork → Repositorio del Profesor                       │
-│                                                               │
-│  6. FEEDBACK                                                 │
-│     Profesor revisa → Comentarios → Correcciones            │
-│                                                               │
-└──────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                  GIT vs GITHUB                              │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  GIT (Programa en tu PC)                                    │
+│  ┌──────────────────────────────────────┐                 │
+│  │  Tu computadora                       │                 │
+│  │  ┌─────────────────────────────────┐ │                 │
+│  │  │  📁 Carpeta con tu código       │ │                 │
+│  │  │  ├── ejercicio1.py              │ │                 │
+│  │  │  ├── ejercicio2.py              │ │                 │
+│  │  │  └── .git/  ← Historial local  │ │                 │
+│  │  └─────────────────────────────────┘ │                 │
+│  └──────────────────────────────────────┘                 │
+│                      │                                       │
+│                      │ git push                             │
+│                      │ (subir)                              │
+│                      ↓                                       │
+│  GITHUB (En Internet)                                       │
+│  ┌──────────────────────────────────────┐                 │
+│  │  🌐 github.com                        │                 │
+│  │  ┌─────────────────────────────────┐ │                 │
+│  │  │  📦 Tu repositorio online       │ │                 │
+│  │  │  (Visible en el navegador)      │ │                 │
+│  │  └─────────────────────────────────┘ │                 │
+│  └──────────────────────────────────────┘                 │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
 ```
+
+### ¿Qué es un FORK?
+
+Un **fork** es hacer TU PROPIA COPIA del repositorio del profesor en GitHub.
+
+**Piénsalo así:**
+- 📚 El profesor tiene un libro (repositorio)
+- 📄 Haces una fotocopia del libro completo (fork)
+- ✏️ Ahora puedes escribir en TU copia sin afectar el original
+- 📤 Cuando termines, le muestras tu trabajo al profesor (Pull Request)
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              ¿QUÉ ES UN FORK? (Explicación Visual)          │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  REPOSITORIO ORIGINAL (Del Profesor)                        │
+│  ┌────────────────────────────────────────────┐            │
+│  │  👨‍🏫 TodoEconometria/ejercicios-bigdata     │            │
+│  │  ├── ejercicio_01/                          │            │
+│  │  ├── ejercicio_02/                          │            │
+│  │  └── datos/                                 │            │
+│  │                                              │            │
+│  │  🔒 NO puedes modificar esto directamente   │            │
+│  └────────────────────────────────────────────┘            │
+│                        │                                     │
+│                        │ 🍴 HACER FORK                       │
+│                        │ (Click en botón "Fork")             │
+│                        ↓                                     │
+│  TU FORK (Tu Copia Personal en GitHub)                      │
+│  ┌────────────────────────────────────────────┐            │
+│  │  👤 TU_USUARIO/ejercicios-bigdata           │            │
+│  │  ├── ejercicio_01/                          │            │
+│  │  ├── ejercicio_02/                          │            │
+│  │  └── datos/                                 │            │
+│  │                                              │            │
+│  │  ✅ Esta copia SÍ puedes modificarla        │            │
+│  └────────────────────────────────────────────┘            │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📋 FLUJO COMPLETO DE TRABAJO (Paso a Paso)
+
+### Visión General: Los 5 Pasos
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│             TU VIAJE DESDE FORK HASTA ENTREGA               │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  PASO 1: FORK (En GitHub)                                   │
+│         Hacer tu copia del repo del profesor                │
+│         ┌──────────────────────────────┐                   │
+│         │ Repo Profesor (Original)     │                   │
+│         └──────────────────────────────┘                   │
+│                      │ Fork                                  │
+│                      ↓                                       │
+│         ┌──────────────────────────────┐                   │
+│         │ Tu Fork (Tu Copia en GitHub) │                   │
+│         └──────────────────────────────┘                   │
+│                                                              │
+│  PASO 2: CLONE (Descargar a tu PC)                         │
+│         Traer tu fork a tu computadora                      │
+│         ┌──────────────────────────────┐                   │
+│         │ Tu Fork (GitHub)              │                   │
+│         └──────────────────────────────┘                   │
+│                      │ git clone                            │
+│                      ↓                                       │
+│         ┌──────────────────────────────┐                   │
+│         │ Carpeta en tu PC              │                   │
+│         └──────────────────────────────┘                   │
+│                                                              │
+│  PASO 3: TRABAJAR (Editar código)                          │
+│         Resolver ejercicios en tu PC                        │
+│         📝 Editas código                                    │
+│         ✅ Haces commits (guardar versiones)                │
+│         🧪 Pruebas que funciona                             │
+│                                                              │
+│  PASO 4: PUSH (Subir a GitHub)                             │
+│         Subir tus cambios a tu fork                         │
+│         ┌──────────────────────────────┐                   │
+│         │ Carpeta en tu PC              │                   │
+│         └──────────────────────────────┘                   │
+│                      │ git push                             │
+│                      ↓                                       │
+│         ┌──────────────────────────────┐                   │
+│         │ Tu Fork (GitHub actualizado)  │                   │
+│         └──────────────────────────────┘                   │
+│                                                              │
+│  PASO 5: PULL REQUEST (Entregar al profesor)               │
+│         Pedir al profesor que revise tu trabajo             │
+│         ┌──────────────────────────────┐                   │
+│         │ Tu Fork                       │                   │
+│         └──────────────────────────────┘                   │
+│                      │ Pull Request                         │
+│                      ↓                                       │
+│         ┌──────────────────────────────┐                   │
+│         │ Repo Profesor (para revisar)  │                   │
+│         └──────────────────────────────┘                   │
+│                      │                                       │
+│                      ↓                                       │
+│         📝 Profesor da feedback                             │
+│         ✅ Corriges si es necesario                         │
+│         🎉 Ejercicio aprobado                               │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Diagrama de Secuencia Detallado
+
+```
+ACTORES:
+👤 Tú (Alumno)    |    💻 Tu PC    |    🌐 GitHub    |    👨‍🏫 Profesor
+
+═══════════════════════════════════════════════════════════════
+
+PASO 1: HACER FORK
+─────────────────
+👤 ─────────────────────────────────────> 🌐
+   "Quiero copiar el repo del profesor"
+
+                                          🌐 (GitHub)
+                                          ├─ Repo Profesor
+                                          │  TodoEconometria/ejercicios-bigdata
+                                          │
+                                          └─ Tu Fork (copia)
+                                             TU_USUARIO/ejercicios-bigdata
+
+                                          🌐 ───────────────> 👤
+                                             "Listo! Tu fork está creado"
+
+═══════════════════════════════════════════════════════════════
+
+PASO 2: CLONAR A TU PC
+──────────────────────
+👤 ─────> 💻 "git clone https://github.com/TU_USUARIO/ejercicios-bigdata"
+
+💻 ─────────────────────────────────────> 🌐 Tu Fork
+   "Descárgame todo el código"
+
+                                          🌐 ───────────────> 💻
+                                             "Aquí están todos los archivos"
+
+💻 (Ahora tienes):
+   📁 ejercicios-bigdata/
+   ├── ejercicio_01/
+   ├── ejercicio_02/
+   └── datos/
+
+💻 ───────────────> 👤 "Descarga completa!"
+
+═══════════════════════════════════════════════════════════════
+
+PASO 3: TRABAJAR LOCALMENTE
+────────────────────────────
+👤 ───> 💻 "Abrir ejercicio_01.py y editarlo"
+
+💻 (Tu editor de código)
+   📝 Escribes código
+   🧪 Pruebas: python ejercicio_01.py
+   ✅ Funciona!
+
+👤 ───> 💻 "git add ejercicio_01.py"
+👤 ───> 💻 "git commit -m 'Ejercicio 01 completado'"
+
+💻 (Ahora Git tiene tu cambio guardado localmente)
+   ⚠️ Pero SOLO en tu PC, NO en GitHub todavía!
+
+═══════════════════════════════════════════════════════════════
+
+PASO 4: SUBIR A GITHUB (PUSH)
+──────────────────────────────
+👤 ───> 💻 "git push origin main"
+
+💻 ─────────────────────────────────────> 🌐 Tu Fork
+   "Aquí está mi nuevo código"
+
+                                          🌐 ───────────────> 💻
+                                             "Actualización guardada!"
+
+Ahora tu código está en:
+  💻 Tu PC ✅
+  🌐 Tu Fork en GitHub ✅
+  👨‍🏫 Repo del Profesor ❌ (todavía no)
+
+═══════════════════════════════════════════════════════════════
+
+PASO 5: CREAR PULL REQUEST
+───────────────────────────
+👤 ───> 🌐 "Crear Pull Request desde mi fork al repo del profesor"
+
+                                          🌐 Crea una "solicitud":
+                                          ┌────────────────────────┐
+                                          │ Pull Request #42       │
+                                          │ De: TU_USUARIO         │
+                                          │ Para: TodoEconometria  │
+                                          │ Cambios: ejercicio_01  │
+                                          └────────────────────────┘
+
+                                          🌐 ───────────────> 👨‍🏫
+                                             "El alumno X entregó ejercicio"
+
+═══════════════════════════════════════════════════════════════
+
+PASO 6: REVISIÓN Y FEEDBACK
+────────────────────────────
+👨‍🏫 ───> 🌐 "Revisar Pull Request #42"
+
+                                          🌐 Muestra el código
+                                          👨‍🏫 lee línea por línea
+
+👨‍🏫 ───> 🌐 "Agregar comentario: Línea 15, usa mejor método X"
+
+                                          🌐 ───────────────> 👤
+                                             "Tienes feedback del profesor"
+
+👤 ───> 💻 "Hacer correcciones en ejercicio_01.py"
+👤 ───> 💻 "git commit -m 'Correcciones según feedback'"
+👤 ───> 💻 "git push"
+
+💻 ─────────────────────────────────────> 🌐 Tu Fork
+
+                                          🌐 (El PR se actualiza automáticamente!)
+
+                                          🌐 ───────────────> 👨‍🏫
+                                             "El alumno hizo correcciones"
+
+👨‍🏫 ───> 🌐 "Aprobar y cerrar PR"
+
+                                          🌐 ───────────────> 👤
+                                             "✅ Ejercicio aprobado!"
+
+═══════════════════════════════════════════════════════════════
+
+RESULTADO FINAL:
+  ✅ Tu código está en tu fork
+  ✅ El profesor vio tu trabajo
+  ✅ Recibiste feedback
+  ✅ Ejercicio completado y aprobado
+  🎓 ¡Aprendiste Git + Big Data!
+```
+
+---
 
 ### PASO 1: Hacer Fork del Repositorio
 
-**¿Qué es un Fork?**
+#### Instrucciones Paso a Paso
 
-Un fork es TU COPIA PERSONAL del repositorio. Piénsalo como fotocopiar un libro: el original sigue siendo del autor, pero tú puedes escribir en tu copia.
+**1. Ir al repositorio del profesor:**
 
-**Cómo hacer Fork:**
+Abre tu navegador y ve a:
+```
+https://github.com/TodoEconometria/ejercicios-bigdata
+```
 
-1. **Ir al repositorio original:**
-   https://github.com/TodoEconometria/ejercicios-bigdata
+**2. Hacer Fork (copiar a tu cuenta):**
 
-2. **Click en "Fork"** (botón arriba a la derecha)
+```
+┌─────────────────────────────────────────┐
+│  GitHub - Página del Repositorio       │
+├─────────────────────────────────────────┤
+│                                          │
+│  [⭐ Star]  [🍴 Fork]  [⬇ Code]        │
+│              ↑                           │
+│              └── HAZ CLICK AQUÍ         │
+│                                          │
+└─────────────────────────────────────────┘
+```
 
-3. **Seleccionar tu cuenta** como destino
+- Click en el botón **"Fork"** (arriba a la derecha)
+- Selecciona **tu cuenta de GitHub** como destino
+- Espera unos segundos mientras GitHub copia todo
 
-4. **¡Listo!** Ahora tienes tu propia copia en:
-   `https://github.com/TU_USUARIO/ejercicios-bigdata`
+**3. Verificar tu fork:**
 
-**⚠️ IMPORTANTE:** Siempre trabaja en TU fork, NO en el repositorio original.
+Ahora deberías estar en TU copia:
+```
+https://github.com/TU_USUARIO/ejercicios-bigdata
+        ↑
+        └── Aquí debe aparecer TU nombre de usuario
+```
+
+✅ **Listo!** Ya tienes tu copia personal del repositorio.
 
 ---
 
 ### PASO 2: Clonar TU Fork a Tu Computadora
 
-```bash
-# ❌ MAL - No clones el original
-git clone https://github.com/TodoEconometria/ejercicios-bigdata.git
+#### ¿Qué significa "clonar"?
 
-# ✅ BIEN - Clona TU fork
+**Clonar** = Descargar todo el código de GitHub a tu computadora
+
+```
+┌─────────────────────────────────────────┐
+│  🌐 GitHub (Tu Fork)                    │
+│  https://github.com/TU_USUARIO/...     │
+└─────────────────────────────────────────┘
+                  │
+                  │ git clone (descargar)
+                  ↓
+┌─────────────────────────────────────────┐
+│  💻 Tu PC                                │
+│  📁 Carpeta: ejercicios-bigdata/        │
+│     ├── ejercicio_01/                   │
+│     ├── ejercicio_02/                   │
+│     └── datos/                          │
+└─────────────────────────────────────────┘
+```
+
+#### Instrucciones Paso a Paso
+
+**1. Abrir la terminal/cmd:**
+
+- **Windows:** Presiona `Win + R`, escribe `cmd`, Enter
+- **Mac:** Busca "Terminal" en Spotlight
+- **Linux:** `Ctrl + Alt + T`
+
+**2. Ir a la carpeta donde quieres guardar el proyecto:**
+
+```bash
+# Ejemplo: Ir a Documentos
+cd Documents
+
+# O crear una carpeta nueva para tus proyectos
+mkdir mis-proyectos
+cd mis-proyectos
+```
+
+**3. Clonar TU fork (reemplaza TU_USUARIO):**
+
+```bash
 git clone https://github.com/TU_USUARIO/ejercicios-bigdata.git
+```
 
-# Entrar al directorio
+⚠️ **IMPORTANTE:** Asegúrate de poner **TU nombre de usuario**, no "TodoEconometria"
+
+**4. Entrar a la carpeta:**
+
+```bash
 cd ejercicios-bigdata
+```
 
-# Configurar el repositorio original como "upstream"
+**5. Conectar con el repo original del profesor:**
+
+Esto te permite recibir actualizaciones cuando el profesor agregue ejercicios nuevos:
+
+```bash
 git remote add upstream https://github.com/TodoEconometria/ejercicios-bigdata.git
+```
 
-# Verificar remotos
+**6. Verificar que todo está bien:**
+
+```bash
 git remote -v
-# Deberías ver:
-# origin    → tu fork
-# upstream  → repositorio original
 ```
+
+Deberías ver algo así:
+```
+origin    https://github.com/TU_USUARIO/ejercicios-bigdata.git (tu fork)
+upstream  https://github.com/TodoEconometria/ejercicios-bigdata.git (profesor)
+```
+
+✅ **Listo!** Ya tienes todo el código en tu computadora.
 
 ---
 
-### PASO 3: Crear Tu Repositorio Privado de Pruebas
+### PASO 3: Trabajar en un Ejercicio
 
-#### ¿Por Qué Necesitas un Repo Privado?
+#### Instrucciones Super Simples
 
-**Historia real de lo que nos pasó:**
-
-> *"Estaba desarrollando un ejercicio nuevo. Subí el borrador al repositorio público sin darme cuenta. Los alumnos vieron las soluciones antes de tiempo. Tuve que hacer rollback de emergencia y limpiar el historial de Git. Perdí 3 horas arreglando el desastre."*
-> — Experiencia real del profesor
-
-**Lecciones aprendidas:**
-
-1. ❌ **Nunca experimentes directamente en el repositorio público**
-2. ✅ **Siempre prueba primero en un repo privado**
-3. ✅ **Solo publica cuando estés 100% seguro**
-
-#### Opción A: Repositorio Privado Tradicional
-
-**Crear repo privado:**
+**1. Abrir el ejercicio en tu editor:**
 
 ```bash
-# 1. Ir a https://github.com/new
+# Si usas Visual Studio Code
+code .
 
-# 2. Configurar:
-#    - Repository name: bigdata-practica (o como quieras)
-#    - Description: "Mi espacio de práctica para Big Data"
-#    - Visibility: 🔒 Private (MUY IMPORTANTE)
-#    - Initialize: NO (dejar vacío)
-
-# 3. Crear repositorio
-
-# 4. En tu computadora, crear carpeta separada:
-mkdir ../bigdata-practica
-cd ../bigdata-practica
-
-# 5. Inicializar y conectar
-git init
-git remote add origin https://github.com/TU_USUARIO/bigdata-practica.git
-
-# 6. Copiar ejercicios para experimentar
-cp -r ../ejercicios-bigdata/ejercicios/ .
-cp -r ../ejercicios-bigdata/datos/ .
-
-# 7. Hacer primer commit
-git add .
-git commit -m "Setup inicial de práctica"
-git push -u origin main
+# Si usas otro editor, ábrelo manualmente
+# y busca la carpeta ejercicios-bigdata/
 ```
 
-**Flujo de trabajo con repo privado:**
+**2. Ir a la carpeta del ejercicio:**
 
 ```
-ejercicios-bigdata/          ← Fork público (entregas)
-│
-└─ ejercicios/
-   └─ 01_cargar_sqlite.py
-
-bigdata-practica/            ← Repo privado (experimentos)
-│
-├─ prueba_01.py             ← Experimentas aquí
-├─ prueba_02_error.py       ← Si falla, no importa
-└─ 01_solucion_final.py     ← Cuando funciona, copias al público
+ejercicios-bigdata/
+  └── ejercicios/
+      └── 01_cargar_sqlite/    ← Abre esta carpeta
+          ├── README.md        ← Lee primero el enunciado
+          └── ejercicio.py     ← Trabaja aquí
 ```
 
-#### Opción B: GitHub Codespaces (Más Fácil)
+**3. Leer el enunciado COMPLETO:**
 
-**¿Qué es Codespaces?**
+No empieces a codear sin leer. Lee TODO el README.md del ejercicio.
 
-Un entorno de desarrollo completo en la nube. Como tener Visual Studio Code en tu navegador.
+**4. Editar el código:**
 
-**Ventajas:**
+Abre `ejercicio.py` y empieza a trabajar. Guarda frecuentemente (`Ctrl + S`).
 
-- ✅ No necesitas instalar nada
-- ✅ Funciona desde cualquier computadora
-- ✅ Entorno aislado para experimentar
-- ✅ 60 horas gratis al mes
-
-**Cómo usar:**
-
-1. En tu fork de GitHub, click en "Code" → "Codespaces" → "Create codespace"
-
-2. Se abre VS Code en el navegador ✨
-
-3. Terminal integrada para ejecutar código
-
-4. Experimenta sin miedo - es tu espacio privado
-
-5. Cuando estés listo, haz commit y push
-
-**Recomendación:** Usa Codespaces para experimentos rápidos, repo privado para proyectos serios.
-
----
-
-### PASO 4: Trabajar en un Ejercicio
-
-#### Workflow Completo
+**5. Probar tu código:**
 
 ```bash
-# ═══════════════════════════════════════════════════════
-# CADA VEZ QUE EMPIECES UN EJERCICIO NUEVO
-# ═══════════════════════════════════════════════════════
+# Ejecutar el ejercicio
+python ejercicios/01_cargar_sqlite/ejercicio.py
+```
 
-# 1. Actualizar tu fork con cambios del profesor
-git checkout main
-git fetch upstream
-git merge upstream/main
+🐛 **¿Tienes errores?** Es normal. Lee el error, corrígelo, vuelve a probar.
+
+**6. Cuando funcione, guardar con Git:**
+
+```bash
+# Ver qué archivos cambiaste
+git status
+
+# Agregar tus cambios
+git add ejercicios/01_cargar_sqlite/ejercicio.py
+
+# Guardar con un mensaje
+git commit -m "Ejercicio 01 completado: carga de datos SQLite"
+```
+
+**7. Subir a GitHub:**
+
+```bash
 git push origin main
-
-# 2. Crear una rama para el ejercicio (OPCIONAL pero recomendado)
-git checkout -b ejercicio-01
-
-# 3. Ir a la carpeta del ejercicio
-cd ejercicios/01_cargar_sqlite.py
-
-# 4. Leer el enunciado COMPLETO
-cat ENUNCIADO.md  # Si existe
-# O ver comentarios en el archivo .py
-
-# 5. Experimentar primero en tu repo privado (si es complejo)
-#    Copiar el archivo a bigdata-practica/
-#    Probar diferentes enfoques
-#    Cuando funcione, volver al repo público
-
-# 6. Trabajar en el ejercicio
-code 01_cargar_sqlite.py  # O tu editor favorito
-
-# 7. Ejecutar y probar
-python 01_cargar_sqlite.py
-
-# 8. Si funciona, hacer commit
-git add 01_cargar_sqlite.py
-git commit -m "Ejercicio 01: Implementar carga de datos SQLite"
-
-# 9. Si no funciona, seguir iterando
-#    NO hagas commit de código roto
-
-# 10. Cuando esté listo, subir a tu fork
-git push origin ejercicio-01  # O main si no creaste rama
 ```
 
-#### Tips para Resolver Ejercicios
-
-**🎯 Antes de Empezar:**
-
-```
-□ Leí el enunciado COMPLETO (no solo el título)
-□ Entendí QUÉ se pide (no cómo hacerlo todavía)
-□ Identifiqué los datos de entrada y salida esperada
-□ Busqué si hay un archivo AYUDA.md con pistas
-```
-
-**💻 Mientras Trabajo:**
-
-```python
-# ✅ BIEN - Desarrolla en pasos pequeños
-# Paso 1: Cargar datos
-df = pd.read_csv("datos.csv")
-print(df.head())  # Verificar que cargó bien
-
-# Paso 2: Limpiar datos
-df = df.dropna()
-print(f"Filas después de limpiar: {len(df)}")
-
-# Paso 3: Analizar
-resultado = df.groupby("categoria").sum()
-print(resultado)
-
-# ❌ MAL - Escribir todo de golpe
-df = pd.read_csv("datos.csv").dropna().groupby("categoria").sum()
-# Si falla, no sabes en qué paso fue el error
-```
-
-**🧪 Probar Frecuentemente:**
-
-```bash
-# No esperes a terminar todo para probar
-python mi_ejercicio.py  # Ejecuta después de cada cambio importante
-```
-
-**📝 Commits Frecuentes:**
-
-```bash
-# ✅ BIEN
-git commit -m "Ejercicio 01: Agregar función de carga"
-git commit -m "Ejercicio 01: Implementar limpieza de nulos"
-git commit -m "Ejercicio 01: Agregar análisis estadístico"
-
-# ❌ MAL
-git commit -m "ejercicio terminado"  # Vago, sin contexto
-```
+✅ **Listo!** Tus cambios están en tu fork de GitHub.
 
 ---
 
-### PASO 5: Hacer Pull Request (Entregar)
+### PASO 4: Actualizar Cuando el Profesor Agregue Ejercicios Nuevos
 
-#### ¿Qué es un Pull Request (PR)?
-
-Un Pull Request es decir: *"Profe, terminé el ejercicio. ¿Puedes revisarlo?"*
-
-Es como entregar una tarea, pero con superpoderes:
-- El profesor ve exactamente QUÉ cambiaste
-- Puede comentar líneas específicas de código
-- Puedes hacer correcciones después
-- Queda registro de todo el proceso
-
-#### Cómo Crear un PR
-
-**1. Asegúrate de que tu código funciona:**
+El profesor va a agregar nuevos ejercicios. Para obtenerlos:
 
 ```bash
-# Ejecuta el ejercicio una última vez
-python ejercicios/01_cargar_sqlite.py
+# 1. Descargar cambios del profesor
+git fetch upstream
 
-# Revisa que no hay errores
-# Verifica que cumple los requisitos del enunciado
+# 2. Integrar cambios a tu código
+git checkout main
+git merge upstream/main
+
+# 3. Subir actualizaciones a tu fork
+git push origin main
 ```
 
-**2. Sube tus cambios a tu fork:**
+⚠️ **Haz esto CADA SEMANA** para tener los ejercicios nuevos.
+
+---
+
+### PASO 5: Hacer Pull Request (Entregar al Profesor)
+
+#### ¿Qué es un Pull Request?
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│            ¿QUÉ ES UN PULL REQUEST?                         │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Un Pull Request (PR) es como decir:                        │
+│  "Profe, terminé mi ejercicio. ¿Puedes revisarlo?"          │
+│                                                              │
+│  ┌──────────────────────────────┐                          │
+│  │  Tu Fork                      │                          │
+│  │  (Ya tiene tu código listo)   │                          │
+│  └──────────────────────────────┘                          │
+│                  │                                           │
+│                  │ Pull Request                             │
+│                  │ (Solicitud de revisión)                  │
+│                  ↓                                           │
+│  ┌──────────────────────────────┐                          │
+│  │  Repo del Profesor            │                          │
+│  │  (Espera para revisar)        │                          │
+│  └──────────────────────────────┘                          │
+│                  │                                           │
+│                  ↓                                           │
+│  👨‍🏫 Profesor revisa:                                        │
+│     - Ve tu código línea por línea                          │
+│     - Deja comentarios si hay que mejorar algo             │
+│     - Aprueba cuando está bien                              │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### Instrucciones Paso a Paso
+
+**1. Verifica que tu código funciona:**
 
 ```bash
-git push origin ejercicio-01  # O main si trabajaste ahí
+# Ejecuta tu ejercicio una última vez
+python ejercicios/01_cargar_sqlite/ejercicio.py
+
+# ¿Funciona sin errores? ✅ Continúa
+# ¿Tiene errores? 🐛 Corrígelos primero
 ```
 
-**3. Ir a GitHub:**
+**2. Asegúrate de haber hecho commit:**
 
-Opción A: GitHub te muestra un banner amarillo automáticamente:
+```bash
+# Ver si hay cambios sin guardar
+git status
+
+# Si hay cambios, guárdalos:
+git add .
+git commit -m "Ejercicio 01 completado"
 ```
-"ejercicio-01 had recent pushes"
-[Compare & pull request]  ← Click aquí
+
+**3. Subir a tu fork en GitHub:**
+
+```bash
+git push origin main
 ```
 
-Opción B: Manual:
-1. Ir a tu fork: `https://github.com/TU_USUARIO/ejercicios-bigdata`
-2. Click en "Pull requests" → "New pull request"
-3. Seleccionar:
-   - Base repository: `TodoEconometria/ejercicios-bigdata` (base: `main`)
-   - Head repository: `TU_USUARIO/ejercicios-bigdata` (compare: `ejercicio-01`)
+**4. Ir a GitHub en tu navegador:**
 
-**4. Completar información del PR:**
+Abre: `https://github.com/TU_USUARIO/ejercicios-bigdata`
+
+**5. Crear el Pull Request:**
+
+GitHub te mostrará un banner amarillo:
+
+```
+┌───────────────────────────────────────────────────┐
+│  ⚠️ main had recent pushes                        │
+│  [Compare & pull request]  ← CLICK AQUÍ          │
+└───────────────────────────────────────────────────┘
+```
+
+Si no ves el banner:
+- Click en **"Pull requests"**
+- Click en **"New pull request"**
+- Selecciona:
+  - Base: `TodoEconometria/ejercicios-bigdata` (main)
+  - Compare: `TU_USUARIO/ejercicios-bigdata` (main)
+
+**6. Completar la información:**
 
 ```markdown
-Título: Entrega Ejercicio 01: Carga de Datos SQLite - [Tu Nombre]
+Título:
+Ejercicio 01 - [Tu Nombre Completo]
 
 Descripción:
-## ✅ Ejercicio Completado
-Ejercicio 01: Análisis de datos con SQLite
+## ✅ Qué hice
+- Implementé la carga de datos desde CSV a SQLite
+- Agregué queries para análisis básico
+- Probé con el dataset completo
 
-## 📝 Qué Hice
-- Implementé función para cargar datos desde CSV a SQLite
-- Agregué validación de tipos de datos
-- Creé queries SQL para análisis básico
-- Generé reporte de estadísticas descriptivas
+## 🧪 Pruebas
+- ✅ Funciona sin errores
+- ✅ Probado con 10,000 registros
+- ✅ Los resultados son correctos
 
-## 🧪 Pruebas Realizadas
-- ✅ Probado con dataset de 10,000 registros
-- ✅ Probado con datos con valores nulos
-- ✅ Verificado que queries devuelven resultados esperados
+## 💭 Preguntas (opcional)
+- ¿Hay una forma más eficiente de hacer X?
 
-## ⏱️ Tiempo Invertido
-Aproximadamente 4 horas (incluyendo investigación)
-
-## 🤔 Dificultades Encontradas
-- Tuve problemas inicialmente con la codificación UTF-8 del CSV
-- Solucionado agregando `encoding='utf-8'` en read_csv()
-
-## 💡 Aprendizajes
-- Aprendí la diferencia entre SQLite y bases de datos cliente-servidor
-- Entendí cuándo usar índices en SQLite
-- Practiqué optimización de queries
-
-## 📚 Recursos Consultados
-- Documentación oficial de SQLite
-- Pandas documentation sobre to_sql()
-- Stack Overflow para el problema de encoding
-
-## 🙋 Preguntas para el Profesor
-- ¿Hay una forma más eficiente de hacer bulk insert en SQLite?
-- ¿Debería usar transactions para mejorar performance?
 ```
 
-**5. Click "Create pull request"**
+**7. Click "Create pull request"**
 
-**6. Esperar revisión del profesor**
-
-#### Después de Crear el PR
-
-**Si el profesor pide cambios:**
-
-```bash
-# 1. Hacer las correcciones en tu código local
-# Edita los archivos según los comentarios
-
-# 2. Commitear los cambios
-git add .
-git commit -m "Correcciones según feedback: optimizar queries"
-
-# 3. Subir cambios
-git push origin ejercicio-01
-
-# 4. El PR se actualiza automáticamente ✨
-# No necesitas crear un nuevo PR
-```
-
-**Si el profesor aprueba:**
-
-🎉 ¡Felicitaciones! Tu código fue aceptado.
+✅ **¡Listo!** El profesor recibirá una notificación y revisará tu trabajo.
 
 ---
 
-### PASO 6: Mantener tu Fork Actualizado
+#### ¿Qué Pasa Después?
 
-El profesor subirá nuevos ejercicios y actualizaciones. Necesitas sincronizar:
+**Escenario 1: El profesor pide cambios**
+
+```
+┌─────────────────────────────────────────┐
+│  👨‍🏫 Profesor comenta:                   │
+│  "En la línea 15, usa mejor método X"  │
+└─────────────────────────────────────────┘
+              ↓
+    Tú corriges en tu PC
+              ↓
+    git commit -m "Correcciones"
+    git push origin main
+              ↓
+    El PR se actualiza automáticamente ✨
+              ↓
+    Profesor revisa de nuevo
+```
+
+**Escenario 2: El profesor aprueba**
+
+```
+┌─────────────────────────────────────────┐
+│  ✅ Ejercicio aprobado                   │
+│  🎉 ¡Felicitaciones!                     │
+└─────────────────────────────────────────┘
+```
+
+---
+
+### 📚 Tips para el Éxito
+
+**🎯 Antes de Empezar un Ejercicio:**
+
+```
+□ Lee el enunciado COMPLETO (no solo el título)
+□ Entiende QUÉ se pide antes de pensar en el CÓMO
+□ Busca si hay archivos AYUDA.md o TIPS.md
+```
+
+**💻 Mientras Trabajas:**
+
+```python
+# ✅ BIEN - Trabaja en pasos pequeños
+# Paso 1: Cargar datos
+df = pd.read_csv("datos.csv")
+print(df.head())  # Verifica que funcionó
+
+# Paso 2: Limpiar
+df = df.dropna()
+print(f"Filas: {len(df)}")
+
+# ❌ MAL - Todo en una línea
+df = pd.read_csv("datos.csv").dropna().groupby("x").sum()
+# Si falla, ¿dónde está el error?
+```
+
+**📝 Haz Commits Frecuentes:**
 
 ```bash
-# Hacer esto SEMANALMENTE o antes de empezar un nuevo ejercicio
-
-# 1. Cambiar a main
-git checkout main
-
-# 2. Descargar cambios del profesor
-git fetch upstream
-
-# 3. Integrar cambios
-git merge upstream/main
-
-# Si hay conflictos (raro), Git te avisará
-# Resuelve manualmente y haz commit
-
-# 4. Subir actualizaciones a tu fork
-git push origin main
-
-# ¡Listo! Tu fork está actualizado
+# Cada vez que algo funcione, guárdalo:
+git commit -m "Agregar función de carga"
+git commit -m "Implementar limpieza de datos"
+git commit -m "Agregar análisis estadístico"
 ```
 
 ---
