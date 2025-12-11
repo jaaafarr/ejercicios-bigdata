@@ -1347,6 +1347,77 @@ ejercicios-bigdata/
 
 ---
 
+## ⚠️ IMPORTANTE: Mantén tu Fork Actualizado
+
+> **Si ya hiciste fork del repositorio, lee esto primero antes de empezar cualquier ejercicio.**
+
+### El Problema Común
+
+Cuando haces fork del repositorio, obtienes una **copia en ese momento**. Durante el curso, agregaré constantemente:
+- ✅ Nuevos ejercicios (1.5-1.7, módulo 2, 3, etc.)
+- ✅ Correcciones y mejoras
+- ✅ Datasets adicionales
+- ✅ Documentación actualizada
+
+**Tu fork NO se actualiza automáticamente.** Si no sincronizas, te faltarán ejercicios y contenido nuevo.
+
+### Diagrama del Problema
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ SEMANA 1: Hiciste Fork                                  │
+│ Repo Profesor: [01] [02]                                │
+│ Tu Fork:       [01] [02] ✅ Sincronizados               │
+└─────────────────────────────────────────────────────────┘
+               ⬇️ Pasan 2 semanas...
+┌─────────────────────────────────────────────────────────┐
+│ SEMANA 3: Profesor agregó ejercicios 03, 04, 05        │
+│ Repo Profesor: [01] [02] [03] [04] [05]                │
+│ Tu Fork:       [01] [02] ❌ Te faltan 03, 04, 05!       │
+└─────────────────────────────────────────────────────────┘
+```
+
+### ✅ Solución: Sincroniza Semanalmente
+
+Tienes **2 métodos** para mantener tu fork actualizado:
+
+#### Método 1: Desde la Terminal (3 comandos)
+
+```bash
+git fetch upstream          # Descargar cambios del profesor
+git merge upstream/main     # Fusionar con tu código
+git push origin main        # Actualizar tu fork en GitHub
+```
+
+#### Método 2: Desde GitHub (más fácil)
+
+1. Ve a tu fork en GitHub
+2. Click en **"Sync fork"** → **"Update branch"**
+3. En tu PC: `git pull origin main`
+
+### 📅 Frecuencia Recomendada
+
+```
+🔄 Cada Lunes antes de clase
+   └─ Sincroniza para tener los ejercicios nuevos
+
+💻 Durante la semana
+   └─ Trabaja normalmente en tus ejercicios
+
+📤 Cada Viernes
+   └─ Push de tu progreso a GitHub
+```
+
+### 📖 Guía Completa
+
+Para instrucciones detalladas con diagramas paso a paso, resolución de conflictos y buenas prácticas, consulta:
+
+**👉 [PASO 4: Actualizar Cuando el Profesor Agregue Ejercicios Nuevos](#paso-4-actualizar-cuando-el-profesor-agregue-ejercicios-nuevos)**
+
+*(Busca "NIVEL 1" más arriba en este README y expande la sección)*
+
+---
+
 ## 📚 Ejercicios Disponibles
 
 ### Roadmap Detallado
