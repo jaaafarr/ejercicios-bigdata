@@ -225,3 +225,4 @@ REFERENCIA ACADEMICA:
 Zaharia, M., et al. (2016). Apache Spark: A unified engine for big data processing. Communications of the ACM, 59(11), 56-65.
 Teorey, T., et al. (2011). Quality of Government Standard Dataset. University of Gothenburg.
 Merkel, D. (2014). Docker: Lightweight Linux Containers for Consistent Development and Deployment. Linux Journal, 2014(239), 2.
+d

@@ -1,0 +1,39 @@
+===============================================================
+   INSTRUCCIONES DE EJECUCIÓN DEL PROYECTO (WINDOWS)
+===============================================================
+
+Sigue estos pasos en tu terminal (PowerShell o CMD) desde la carpeta 'plantilla':
+
+1. CREAR ENTORNO VIRTUAL (Opcional pero recomendado)
+----------------------------------------------------
+python -m venv venv
+
+2. ACTIVAR ENTORNO VIRTUAL
+--------------------------
+.\venv\Scripts\activate
+
+3. INSTALAR DEPENDENCIAS
+------------------------
+pip install -r requirements.txt
+
+4. PREPARAR DATOS
+-----------------
+Hemos creado un script automático para descargar los datos.
+Ejecuta el siguiente comando:
+
+python download_data.py
+
+# Este script creará las carpetas necesarias (..\data\qog) y descargará
+# el archivo 'qog_std_ts_jan24.csv' automáticamente.
+
+5. EJECUTAR EL PIPELINE DE DATOS (SPARK)
+----------------------------------------
+python pipeline.py
+
+# Esto generará el archivo 'revision_final_jaafar.csv' y el gráfico PNG.
+
+6. EJECUTAR EL DASHBOARD INTERACTIVO
+------------------------------------
+streamlit run dashboard.p.py
+
+# Esto abrirá una pestaña en tu navegador con el dashboard.

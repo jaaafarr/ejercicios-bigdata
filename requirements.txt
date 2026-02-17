@@ -12,3 +12,4 @@ plotly
 numpy~=2.4.2
 pillow~=12.1.0
 plt~=0.2.0
+pyspark-stubs
